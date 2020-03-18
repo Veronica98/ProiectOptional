@@ -190,10 +190,14 @@ public class EnemyController : MonoBehaviour
         currentState = state;
     }
 
-    void OnDrawGizmos()
+   /* void OnDrawGizmos()
     {
         Gizmos.DrawLine(wallCheck.position, new Vector2(wallCheck.position.x + wallCheckDistance, wallCheck.position.y));
         Gizmos.DrawLine(groundCheck.position, new Vector2(groundCheck.position.x, groundCheck.position.y - groundCheckDistance));
     }
+    */
+
     
+
+
 }
