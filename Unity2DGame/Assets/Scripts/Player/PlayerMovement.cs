@@ -17,6 +17,8 @@ public class PlayerMovement : MonoBehaviour
     public float checkRadius;
     public LayerMask whatIsGround;
 
+    private bool facingRight = true;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +45,15 @@ public class PlayerMovement : MonoBehaviour
             extraJumps = extraJumpsValue;
         }
 
+        if(facingRight == false && moveInput > 0)
+        {
+            Flip();
+        }
+        else if(facingRight == true && moveInput < 0)
+        {
+            Flip();
+        }
+
         if((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && extraJumps > 0)
         {
             rb.velocity = Vector2.up * jumpForce;
@@ -52,5 +63,12 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.velocity = Vector2.up * jumpForce;
         }
+    }
+
+
+    private void Flip()
+    {
+        facingRight = !facingRight;
+        transform.Rotate(0f, 180f, 0f);
     }
 }
