@@ -26,6 +26,7 @@ public class EnemyController : MonoBehaviour
     private Vector2 movement;
 
     public float currentHealth;
+    public int killPoints = 15;
 
 
     private void Start()
@@ -89,6 +90,7 @@ public class EnemyController : MonoBehaviour
 
     void Die()
     {
+        Score.score += killPoints;
         Destroy(gameObject);
     }
 
