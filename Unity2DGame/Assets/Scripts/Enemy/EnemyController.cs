@@ -28,6 +28,8 @@ public class EnemyController : MonoBehaviour
     public float currentHealth;
     public int killPoints = 15;
 
+    [SerializeField] private HealthBar healthBar;
+
 
     private void Start()
     {
@@ -35,6 +37,7 @@ public class EnemyController : MonoBehaviour
         alive = transform.Find("Alive").gameObject;
         aliveRb = alive.GetComponent<Rigidbody2D>();
         facingDirection = 1;
+        healthBar.SetMaxHealth(maxHealth);
 
     }
 
@@ -82,6 +85,7 @@ public class EnemyController : MonoBehaviour
     public void TakeDamage(float damage)
     {
         currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
 
         if (currentHealth <= 0)
         {
