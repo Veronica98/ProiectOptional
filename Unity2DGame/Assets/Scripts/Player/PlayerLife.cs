@@ -6,9 +6,13 @@ public class PlayerLife : MonoBehaviour
 {
     [SerializeField] private float startingLife;
     private float currentLife;
+
+    [SerializeField] private HealthBar healthBar;
+
     void Start()
     {
         currentLife = startingLife;
+        healthBar.SetMaxHealth(startingLife);
     }
 
 
@@ -30,6 +34,7 @@ public class PlayerLife : MonoBehaviour
         if (currentLife > 0)
         {
             currentLife -= 10;
+            healthBar.SetHealth(currentLife);
 
             if (currentLife <= 0)
             {

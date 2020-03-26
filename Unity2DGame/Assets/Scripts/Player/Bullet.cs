@@ -26,7 +26,6 @@ public class Bullet : MonoBehaviour
         if (enemy != null)
         {
             enemy.TakeDamage(damage);
-            Debug.Log(enemy.currentHealth);
         }
 
         if (hitInfo.name != "Player")
