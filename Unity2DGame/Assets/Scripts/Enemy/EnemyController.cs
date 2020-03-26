@@ -25,7 +25,7 @@ public class EnemyController : MonoBehaviour
 
     private Vector2 movement;
 
-    public float currentHealth;
+    private float currentHealth;
 
 
     private void Start()

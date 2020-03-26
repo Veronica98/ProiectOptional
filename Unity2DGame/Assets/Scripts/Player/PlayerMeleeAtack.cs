@@ -4,20 +4,19 @@ using UnityEngine;
 
 public class PlayerMeleeAtack : MonoBehaviour
 {
+
     public Transform attackPoint;
     public float attackRange = 0.5f;
     public LayerMask enemyLayers;
 
+    public float attackDamage = 20f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-     
-    }
+
 
     // Update is called once per frame
     void Update()
-    {
+    {   
+        //Atac cu click stanga
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Attack();
@@ -34,10 +33,18 @@ public class PlayerMeleeAtack : MonoBehaviour
         //Da damage inamicilor
         foreach(Collider2D enemy in hitEnemies)
         {
-            Debug.Log("We hit " + enemy.name);
+            //Cauta scriptul de enemy controller la obiectul pe care l-a lovit
+            EnemyController inamic = enemy.GetComponentInParent<EnemyController>();
+
+            //In cazul in care exista un astfel de script atunci se apeleaza functia de take damage de la inamic
+            if (inamic != null)
+            {
+                inamic.GetComponent<EnemyController>().TakeDamage(attackDamage);
+            }
         }
     }
 
+    // Vizualizare attack range
     void OnDrawGizmosSelected()
     {
         if(attackPoint == null)
