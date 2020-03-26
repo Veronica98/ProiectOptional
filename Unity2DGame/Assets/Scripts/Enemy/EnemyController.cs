@@ -65,17 +65,18 @@ public class EnemyController : MonoBehaviour
     {
         facingDirection *= -1;
         alive.transform.Rotate(0.0f, 180.0f, 0.0f);
+        wallCheck.transform.Rotate(0.0f, 180.0f, 0.0f);
     }
 
 
     
-
-   /* void OnDrawGizmos()
+    /*
+    void OnDrawGizmos()
     {
         Gizmos.DrawLine(wallCheck.position, new Vector2(wallCheck.position.x + wallCheckDistance, wallCheck.position.y));
         Gizmos.DrawLine(groundCheck.position, new Vector2(groundCheck.position.x, groundCheck.position.y - groundCheckDistance));
     }
-    */
+      */  
 
     
     public void TakeDamage(float damage)
