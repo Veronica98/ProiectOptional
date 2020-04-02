@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     public Transform groundCheck;
     public float checkRadius;
     public LayerMask whatIsGround;
+    public bool isSwinging;
 
     private bool facingRight = true;
 
