@@ -28,6 +28,8 @@ public class EnemyController : MonoBehaviour
     public float currentHealth;
     public int killPoints = 15;
 
+    [SerializeField] private float damage = 10;
+
     [SerializeField] private HealthBar healthBar;
 
 
@@ -97,6 +99,12 @@ public class EnemyController : MonoBehaviour
     {
         Score.score += killPoints;
         Destroy(gameObject);
+    }
+
+
+    public float getDamage()
+    {
+        return damage;
     }
 
 }
