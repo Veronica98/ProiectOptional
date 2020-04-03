@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed;
-    public float jumpForce;
+    [SerializeField] private float speed;
+    [SerializeField] private float jumpForce;
     private float moveInput;
     private int extraJumps;
-    public int extraJumpsValue; 
+    [SerializeField] private int extraJumpsValue; 
 
     private Rigidbody2D rb;
 
@@ -26,7 +26,6 @@ public class PlayerMovement : MonoBehaviour
         extraJumps = extraJumpsValue;
         rb = GetComponent<Rigidbody2D>();
     }
-
 
 
 
@@ -100,5 +99,31 @@ public class PlayerMovement : MonoBehaviour
     {
         facingRight = !facingRight;
         transform.Rotate(0f, 180f, 0f);
+    }
+
+
+    //Setters
+
+    public void setExtraJumps(int newExtraJumps)
+    {
+        extraJumpsValue = newExtraJumps;
+    }
+
+    public void setMovementSpeed(float newMovementSpeed)
+    {
+        speed = newMovementSpeed;
+    }
+
+
+    //Getters
+
+    public int getExtraJumps()
+    {
+        return extraJumpsValue;
+    }
+
+    public float getMovementSpeed()
+    {
+        return speed;
     }
 }

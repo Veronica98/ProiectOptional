@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerLife : MonoBehaviour
 {
@@ -8,11 +9,13 @@ public class PlayerLife : MonoBehaviour
     private float currentLife;
 
     [SerializeField] private HealthBar healthBar;
+    [SerializeField] private Text healthNumberText;
 
     void Start()
     {
         currentLife = startingLife;
         healthBar.SetMaxHealth(startingLife);
+        healthNumberText.text = currentLife.ToString() + " / " + startingLife.ToString(); // Health ui text
     }
 
 
@@ -35,11 +38,28 @@ public class PlayerLife : MonoBehaviour
         {
             currentLife -= 10;
             healthBar.SetHealth(currentLife);
+            healthNumberText.text = currentLife.ToString() + " / " + startingLife.ToString();
+
 
             if (currentLife <= 0)
             {
                 Destroy(gameObject);
             }
         }
+    }
+
+    public float getCurrentLife()
+    {
+        return startingLife;
+    }
+
+
+    public void changeMaxHealth(float maxHealth)
+    {
+        startingLife = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
+        healthBar.SetHealth(currentLife);
+        healthNumberText.text = currentLife.ToString() + " / " + startingLife.ToString();
+
     }
 }

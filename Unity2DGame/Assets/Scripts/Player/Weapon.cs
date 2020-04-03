@@ -35,4 +35,37 @@ public class Weapon : MonoBehaviour
         }
 
     }
+
+
+    //Setters
+
+    public void setFireRate(float newFireRate)
+    {
+        fireRate = newFireRate;
+    }
+
+    public void setRangeDamage(float newRangeDamage)
+    {
+        damage = newRangeDamage;
+    }
+
+    public void setDoubleRangeDamage ()
+    {
+        damage *= 2;
+    }
+
+
+    //Getters
+
+    public float getFireRate ()
+    {
+        return fireRate;
+    }
+
+    public float getRangeDamage()
+    {
+        return damage;
+    }
+
+
 }

@@ -5,11 +5,11 @@ using UnityEngine;
 public class PlayerMeleeAtack : MonoBehaviour
 {
 
-    public Transform attackPoint;
-    public float attackRange = 0.5f;
-    public LayerMask enemyLayers;
+    [SerializeField] private Transform attackPoint;
+    [SerializeField] private float attackRange = 0.5f;
+    [SerializeField] private LayerMask enemyLayers;
 
-    public float attackDamage = 20f;
+    [SerializeField] private float attackDamage = 20f;
 
 
 
@@ -53,6 +53,21 @@ public class PlayerMeleeAtack : MonoBehaviour
         }
 
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+    }
+
+    //Setters
+
+    public void setMeleeDamage(float newMeleeDamage)
+    {
+        attackDamage = newMeleeDamage;
+    }
+
+
+    //Getters
+
+    public float getMeleeDamage ()
+    {
+        return attackDamage;
     }
 
     
