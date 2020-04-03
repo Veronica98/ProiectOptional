@@ -27,12 +27,18 @@ public class Bullet : MonoBehaviour
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
 
-        EnemyController enemy = hitInfo.GetComponentInParent<EnemyController>();
+        EnemyController enemyTiger = hitInfo.GetComponentInParent<EnemyController>();
+        EnemyAI enemyParrot = hitInfo.GetComponent<EnemyAI>();
         
 
-        if (enemy != null)
+        if (enemyTiger != null)
         {
-            enemy.TakeDamage(damage);
+            enemyTiger.TakeDamage(damage);
+        }
+
+        if (enemyParrot != null)
+        {
+            enemyParrot.TakeDamage(damage);
         }
 
         if (hitInfo.name != "Player")

@@ -17,9 +17,18 @@ public class EnemyAI : MonoBehaviour
     Seeker seeker;
     Rigidbody2D rb;
     public Transform EnemyParrotGFX;
+
+    [SerializeField] private float maxHealth;
+    private float currentHealth;
+    [SerializeField] private HealthBar healthBar;
+    [SerializeField] private int killPoints = 20;
+    [SerializeField] private float damage = 20;
+
     // Start is called before the first frame update
     void Start()
     {
+        currentHealth = maxHealth;
+        healthBar.SetMaxHealth(maxHealth);
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         InvokeRepeating("UpdatePath", 0f, .5f);
@@ -79,5 +88,27 @@ public class EnemyAI : MonoBehaviour
         {
             EnemyParrotGFX.localScale = new Vector3(-1f, 1f, 1f); //we flip the bird
         }
+    }
+
+    public void TakeDamage(float damage)
+    {
+        currentHealth -= damage;
+        healthBar.SetHealth(currentHealth);
+
+        if (currentHealth <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
+    {
+        Score.score += killPoints;
+        Destroy(gameObject);
+    }
+
+    public float getDamage()
+    {
+        return damage;
     }
 }

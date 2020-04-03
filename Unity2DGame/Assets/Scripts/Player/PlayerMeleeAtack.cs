@@ -34,12 +34,18 @@ public class PlayerMeleeAtack : MonoBehaviour
         foreach(Collider2D enemy in hitEnemies)
         {
             //Cauta scriptul de enemy controller la obiectul pe care l-a lovit
-            EnemyController inamic = enemy.GetComponentInParent<EnemyController>();
+            EnemyController enemyTiger = enemy.GetComponentInParent<EnemyController>();
+            EnemyAI enemyParrot = enemy.GetComponent<EnemyAI>();
 
             //In cazul in care exista un astfel de script atunci se apeleaza functia de take damage de la inamic
-            if (inamic != null)
+            if (enemyTiger != null)
             {
-                inamic.GetComponent<EnemyController>().TakeDamage(attackDamage);
+                enemyTiger.GetComponent<EnemyController>().TakeDamage(attackDamage);
+            }
+
+            if(enemyParrot != null)
+            {
+                enemyParrot.TakeDamage(attackDamage);
             }
         }
     }
