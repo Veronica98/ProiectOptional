@@ -4,25 +4,26 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float speed;
-    [SerializeField] private float jumpForce;
+    private float speed; // Viteza de miscare
+    [SerializeField] private float jumpForce = 25;
     private float moveInput;
     private int extraJumps;
     [SerializeField] private int extraJumpsValue; 
 
-    private Rigidbody2D rb;
+    private Rigidbody2D rb; // RigidBody-ul playerului
 
-    private bool isGrounded;
-    public Transform groundCheck;
-    public float checkRadius;
-    public LayerMask whatIsGround;
-    public bool isSwinging;
+    private bool isGrounded; // Bool daca playerul este pe pamant sau nu
+    public Transform groundCheck; // Pozitia de unde verifica daca suntem pe ceva de pe care se poate sari sau nu
+    public float checkRadius; // Raza prin care verifica daca suntem pe ceva de pe care se poate sari sau nu
+    public LayerMask whatIsGround; // De pe ce obiecte se poate sari
+    public bool isSwinging; // Bool pentru a vedea daca esti in grappling hook sau nu
 
-    private bool facingRight = true;
+    private bool facingRight = true; // Verificare daca playerul este cu fata in stanga sau in dreapta
 
-    // Start is called before the first frame update
     void Start()
     {
+        speed = gameObject.GetComponent<PlayerStats>().getMovementSpeed(); // Preluam staturile din playerStats
+        extraJumpsValue = gameObject.GetComponent<PlayerStats>().getExtraJumps();
         extraJumps = extraJumpsValue;
         rb = GetComponent<Rigidbody2D>();
     }
@@ -31,16 +32,16 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround);
+        isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround); //Crearea cercului de verificare
 
-        moveInput = Input.GetAxisRaw    ("Horizontal");
-        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+        moveInput = Input.GetAxisRaw    ("Horizontal"); // Input de miscare A D sau Sageata stanga sau Sageata dreapta
+        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y); // Adaugare forta de miscare
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(isGrounded == true)
+        if(isGrounded == true) // Verificam daca player-ul este pe pamanat
         {
             extraJumps = extraJumpsValue;
         }
@@ -54,12 +55,12 @@ public class PlayerMovement : MonoBehaviour
             Flip();
         }
 
-        if((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && extraJumps > 0)
+        if((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && extraJumps > 0) // Jump in aer
         {
             rb.velocity = Vector2.up * jumpForce;
             extraJumps--;
         }
-        else if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && extraJumps == 0 && isGrounded ==true)
+        else if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && extraJumps == 0 && isGrounded ==true) // Jump pe pamant
         {
             rb.velocity = Vector2.up * jumpForce;
         }

@@ -5,15 +5,23 @@ using UnityEngine;
 public class PlayerMeleeAtack : MonoBehaviour
 {
 
-    [SerializeField] private Transform attackPoint;
+    [SerializeField] private Transform attackPoint; // Locul din care se ataca
     [SerializeField] private float attackRange = 0.5f;
-    [SerializeField] private LayerMask enemyLayers;
+    [SerializeField] private LayerMask enemyLayers; // Ce va lovi
 
-    [SerializeField] private float attackDamage = 20f;
+    [SerializeField] private float attackDamage;
+    private float critChance;
+    private float critDamage;
 
 
 
-    // Update is called once per frame
+    private void Start()
+    {
+        critChance = gameObject.GetComponent<PlayerStats>().getCritChance(); // Luam critChance din scriptul playerStats
+        critDamage = gameObject.GetComponent<PlayerStats>().getCritDamage();
+        attackDamage = gameObject.GetComponent<PlayerStats>().getMeleeDamage();
+    }
+
     void Update()
     {   
         //Atac cu click stanga
@@ -40,12 +48,26 @@ public class PlayerMeleeAtack : MonoBehaviour
             //In cazul in care exista un astfel de script atunci se apeleaza functia de take damage de la inamic
             if (enemyTiger != null)
             {
-                enemyTiger.GetComponent<EnemyController>().TakeDamage(attackDamage);
+                if (Random.Range(1, 100) <= critChance) // Se verifica daca lovitura este crit
+                {
+                    enemyTiger.TakeDamage(attackDamage + (attackDamage * (critDamage / 100))); // Se aplica crit damage
+                }
+                else
+                {
+                    enemyTiger.TakeDamage(attackDamage);
+                }
             }
 
-            if(enemyParrot != null)
+            if (enemyParrot != null)
             {
-                enemyParrot.TakeDamage(attackDamage);
+                if (Random.Range(1, 100) <= critChance)
+                {
+                    enemyParrot.TakeDamage(attackDamage + (attackDamage * (critDamage / 100)));
+                }
+                else
+                {
+                    enemyParrot.TakeDamage(attackDamage);
+                }
             }
         }
     }
@@ -68,13 +90,17 @@ public class PlayerMeleeAtack : MonoBehaviour
         attackDamage = newMeleeDamage;
     }
 
-
-    //Getters
-
-    public float getMeleeDamage ()
+    public void setCritChance(float newCritChance)
     {
-        return attackDamage;
+        critChance = newCritChance;
+    } 
+    
+    public void setCritDamage(float newCritDamage)
+    {
+        critDamage = newCritDamage;
     }
+
+
 
     
 }

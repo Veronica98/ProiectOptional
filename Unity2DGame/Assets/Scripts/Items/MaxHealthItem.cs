@@ -9,7 +9,7 @@ public class MaxHealthItem : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player"); // Se cauta dupa tag player-ul
     }
 
 
@@ -17,7 +17,7 @@ public class MaxHealthItem : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            player.GetComponent<PlayerStats>().setMaxHealth(maxHealthChange);
+            player.GetComponent<PlayerStats>().setMaxHealth(maxHealthChange); // Daca exista coliziune cu player-ul se apeleaza functia din PlayerStats pentru stat-ul respectiv si apoi se distruge obiectul instant
             Destroy(gameObject);
         }
     }

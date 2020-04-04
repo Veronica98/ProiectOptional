@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] private Transform firePoint;
-    [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private float damage = 20;
-    [SerializeField] private float fireRate = 0.5f;
-    [SerializeField] private float nextFire;
+    [SerializeField] private Transform firePoint; // De unde se trage
+    [SerializeField] private GameObject bulletPrefab; // Prefab-ul pentru glont
+    [SerializeField] private float fireRate; // Cat de repede trage
+    [SerializeField] private float nextFire; // Variabila folosita pentru a limita cat de repede tragi
+
 
 
     void Start()
@@ -19,7 +19,7 @@ public class Weapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1")) // Se trage folosind click stanga
         {
             Shoot();
         }
@@ -44,28 +44,7 @@ public class Weapon : MonoBehaviour
         fireRate = newFireRate;
     }
 
-    public void setRangeDamage(float newRangeDamage)
-    {
-        damage = newRangeDamage;
-    }
 
-    public void setDoubleRangeDamage ()
-    {
-        damage *= 2;
-    }
-
-
-    //Getters
-
-    public float getFireRate ()
-    {
-        return fireRate;
-    }
-
-    public float getRangeDamage()
-    {
-        return damage;
-    }
 
 
 }

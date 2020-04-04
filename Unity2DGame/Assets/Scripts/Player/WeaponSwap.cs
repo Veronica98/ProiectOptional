@@ -20,17 +20,17 @@ public class WeaponSwap : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.GetComponent<PlayerMeleeAtack>().enabled && !player.GetComponent<Weapon>().enabled)
+        if (player.GetComponent<PlayerMeleeAtack>().enabled && !player.GetComponent<Weapon>().enabled) // Daca suntem in meeleAttack
         {
-            if (Input.GetKeyDown(KeyCode.Q))
+            if (Input.GetKeyDown(KeyCode.Q)) // Apasam Q
             {
-                player.GetComponent<Weapon>().enabled = true;
-                rangedWeapon.GetComponent<SpriteRenderer>().enabled = true;
-                player.GetComponent<PlayerMeleeAtack>().enabled = false;
-                meleeWeapon.GetComponent<SpriteRenderer>().enabled = false;
+                player.GetComponent<Weapon>().enabled = true; // Dam enable la scriptul de range
+                rangedWeapon.GetComponent<SpriteRenderer>().enabled = true; // Dam enable la sprite pentru arma range
+                player.GetComponent<PlayerMeleeAtack>().enabled = false; // Dam disable la scriptul de melee
+                meleeWeapon.GetComponent<SpriteRenderer>().enabled = false; // Dam disable la sprite-ul armei melee
             }
         }
-        else if (!player.GetComponent<PlayerMeleeAtack>().enabled && player.GetComponent<Weapon>().enabled)
+        else if (!player.GetComponent<PlayerMeleeAtack>().enabled && player.GetComponent<Weapon>().enabled) // Daca suntem in rangeAttack
         {
             if (Input.GetKeyDown(KeyCode.Q))
             {

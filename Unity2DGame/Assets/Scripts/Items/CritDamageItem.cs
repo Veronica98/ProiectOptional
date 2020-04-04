@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireRateItem : MonoBehaviour
+public class CritDamageItem : MonoBehaviour
 {
     private GameObject player;
-    [SerializeField] float fireRateChange;
+    [SerializeField] private float critDamageChange;
 
     void Start()
     {
@@ -17,7 +17,7 @@ public class FireRateItem : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
-            player.GetComponent<PlayerStats>().setFireRate(fireRateChange); // Daca exista coliziune cu player-ul se apeleaza functia din PlayerStats pentru stat-ul respectiv si apoi se distruge obiectul instant
+            player.GetComponent<PlayerStats>().setCritDamage(critDamageChange); // Daca exista coliziune cu player-ul se apeleaza functia din PlayerStats pentru stat-ul respectiv si apoi se distruge obiectul instant
             Destroy(gameObject);
         }
     }

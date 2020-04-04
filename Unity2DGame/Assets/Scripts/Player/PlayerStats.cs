@@ -4,57 +4,142 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    private float maxHealth;
-    private int extraJumps;
-    private float movementSpeed;
-    private float meleeDamage;
-    private float rangeDamage;
-    private float fireRate;
+    private float maxHealth = 50;
+    private int extraJumps = 1;
+    private float movementSpeed = 10;
+    private float meleeDamage = 20;
+    private float rangeDamage = 20;
+    private float fireRate = 0.5f;
+    private float critChance = 10f;
+    private float critDamage = 50f;
     private GameObject player;
 
+    //Singleton
+    public static PlayerStats Instance { get; private set; }
 
+    
     private void Awake()
     {
+        if (Instance== null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+
+        else
+        {
+            Destroy(gameObject);
+        }
+
+
         player = GameObject.FindGameObjectWithTag("Player");
+
+       
+
     }
 
+    //End of singleton
 
+
+    /*Fiecare functie primeste ca argument schimbarea pe care o va suferi stat-ul respectiv al playerului
+     * Se actualizeaza mai intai stat-ul respectiv in acest script
+     * Apoi se actualizeaza statu-l respectiv in scripturile in care se va folosi mai departe pentru a nu se face schimbarea in update in acele scripturi care ar costa foarte multe resurse
+    */
     public void setMaxHealth(float maxHealthChange)
     {
-        maxHealth = player.GetComponent<PlayerLife>().getCurrentLife();
-        player.GetComponent<PlayerLife>().changeMaxHealth(maxHealth + maxHealthChange);
+        maxHealth += maxHealthChange;
+        player.GetComponent<PlayerLife>().changeMaxHealth(maxHealth);
     }
 
     public void setExtraJumps (int extraJumpsChange)
     {
-        extraJumps = player.GetComponent<PlayerMovement>().getExtraJumps();
-        player.GetComponent<PlayerMovement>().setExtraJumps(extraJumps + extraJumpsChange);
+        extraJumps += extraJumpsChange;
+        player.GetComponent<PlayerMovement>().setExtraJumps(extraJumps);
     }
 
     public void setMovementSpeed (float movementSpeedChange)
     {
-        movementSpeed = player.GetComponent<PlayerMovement>().getMovementSpeed();
-        player.GetComponent<PlayerMovement>().setMovementSpeed(movementSpeed + movementSpeedChange);
+        movementSpeed += movementSpeedChange;
+        player.GetComponent<PlayerMovement>().setMovementSpeed(movementSpeed);
     }
 
     public void setMeleeDamage (float meleeDamageChange)
     {
-        meleeDamage = player.GetComponent<PlayerMeleeAtack>().getMeleeDamage();
-        player.GetComponent<PlayerMeleeAtack>().setMeleeDamage(meleeDamage + meleeDamageChange);
+        meleeDamage += meleeDamageChange;
+        player.GetComponent<PlayerMeleeAtack>().setMeleeDamage(meleeDamage);
     }
 
     public void setRangeDamage (float rangeDamageChange)
     {
-        rangeDamage = player.GetComponent<Weapon>().getRangeDamage();
-        player.GetComponent<Weapon>().setRangeDamage(rangeDamage + rangeDamageChange);
+        rangeDamage += rangeDamageChange;
     }
 
     public void setFireRate(float fireRateChange)
     {
-        fireRate = player.GetComponent<Weapon>().getFireRate();
-        player.GetComponent<Weapon>().setFireRate(fireRate + fireRateChange);
+        fireRate += fireRateChange;
+        player.GetComponent<Weapon>().setFireRate(fireRate);
     }
 
+
+    public void setDoubleRangeDamage()
+    {
+        rangeDamage *= 2;
+    }
+
+    public void setCritChance(float critChanceChange)
+    {
+        critChance += critChanceChange;
+        player.GetComponent<PlayerMeleeAtack>().setCritChance(critChance);
+    }
+
+    public void setCritDamage(float critDamageChange)
+    {
+        critDamage += critDamageChange;
+        player.GetComponent<PlayerMeleeAtack>().setCritDamage(critDamage);
+    }
+
+
+
+    //Getters
+    public float getMaxHealth()
+    {
+        return maxHealth;
+    }
+
+    public int getExtraJumps()
+    {
+        return extraJumps;
+    }
+
+    public float getMovementSpeed()
+    {
+        return movementSpeed;
+    }
+
+    public float getMeleeDamage()
+    {
+        return meleeDamage;
+    }
+
+    public float getRangeDamage()
+    {
+        return rangeDamage;
+    }
+
+    public float getFireRate()
+    {
+        return fireRate;
+    }
+
+    public float getCritChance()
+    {
+        return critChance;
+    }
+
+    public float getCritDamage()
+    {
+        return critDamage;
+    }
 
 
 
