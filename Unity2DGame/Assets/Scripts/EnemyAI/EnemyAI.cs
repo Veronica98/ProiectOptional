@@ -23,10 +23,12 @@ public class EnemyAI : MonoBehaviour
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private int killPoints = 20;
     [SerializeField] private float damage = 20;
+    private Score score;
 
     // Start is called before the first frame update
     void Start()
     {
+        score = GameObject.FindWithTag("Score").GetComponent<Score>();
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
         seeker = GetComponent<Seeker>();
@@ -103,7 +105,7 @@ public class EnemyAI : MonoBehaviour
 
     void Die()
     {
-        Score.score += killPoints;
+        score.setScore(killPoints);
         Destroy(gameObject);
     }
 

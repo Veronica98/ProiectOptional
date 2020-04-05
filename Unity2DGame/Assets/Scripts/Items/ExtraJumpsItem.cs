@@ -5,7 +5,7 @@ using UnityEngine;
 public class ExtraJumpsItem : MonoBehaviour
 {
     private GameObject player;
-    [SerializeField] int extraJumpsChange;
+    [SerializeField] int extraJumpsChange = 1;
 
     void Start()
     {

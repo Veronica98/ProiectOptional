@@ -55,7 +55,12 @@ public class PlayerLife : MonoBehaviour
 
             if (currentLife <= 0) // Daca player-ul a murit
             {
+                GameObject.Find("Player").GetComponent<PlayerStats>().setLoadedScore(GameObject.FindWithTag("Score").GetComponent<Score>().getScore());
+                FindObjectOfType<GameManager>().SaveAfterDeath();
                 Destroy(gameObject);
+                
+
+
                 FindObjectOfType<GameManager>().EndGame();
             }
         }

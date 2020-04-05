@@ -32,9 +32,12 @@ public class EnemyController : MonoBehaviour
 
     [SerializeField] private HealthBar healthBar;
 
+    private Score score;
+
 
     private void Start()
     {
+        score = GameObject.FindWithTag("Score").GetComponent<Score>();
         currentHealth = maxHealth;
         alive = transform.Find("Alive").gameObject;
         aliveRb = alive.GetComponent<Rigidbody2D>();
@@ -97,7 +100,7 @@ public class EnemyController : MonoBehaviour
 
     void Die()
     {
-        Score.score += killPoints;
+        score.setScore(killPoints);
         Destroy(gameObject);
     }
 

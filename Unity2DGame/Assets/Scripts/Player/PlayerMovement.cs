@@ -66,6 +66,8 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+
+
     IEnumerator OnCollisionEnter2D(Collision2D collision)
     {
         if ((collision.gameObject.name == "jungle_pack_39 (1)") && (isGrounded == true))
