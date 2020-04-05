@@ -56,6 +56,7 @@ public class PlayerLife : MonoBehaviour
             if (currentLife <= 0) // Daca player-ul a murit
             {
                 Destroy(gameObject);
+                FindObjectOfType<GameManager>().EndGame();
             }
         }
     }
