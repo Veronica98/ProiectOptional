@@ -39,6 +39,7 @@ public class PlayerLife : MonoBehaviour
             if (currentLife <= 0)
             {
                 Destroy(gameObject);
+                FindObjectOfType<GameManager>().EndGame();
             }
         }
     }
