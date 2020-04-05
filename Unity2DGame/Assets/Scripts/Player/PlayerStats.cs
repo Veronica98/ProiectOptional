@@ -12,7 +12,7 @@ public class PlayerStats : MonoBehaviour
     private float fireRate = 0.5f;
     private float critChance = 10f;
     private float critDamage = 50f;
-    private int score = 0;
+    private int score;
     private GameObject player;
 
     //Singleton
@@ -44,6 +44,7 @@ public class PlayerStats : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log("S-a apelat Start din playerStats");
         FindObjectOfType<GameManager>().Load();
         GameObject.FindGameObjectWithTag("Score").GetComponent<Score>().setStartingScore(score);
     }

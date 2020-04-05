@@ -16,14 +16,11 @@ public class GameManager : MonoBehaviour
     {
        
 
-        if(!GameObject.Find("Player"))
-        {
-            Debug.Log("nu exista palyer");
-        }
-        else
+        if(GameObject.Find("Player"))
         {
             playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerStats>();
         }
+      
         SaveSystem.Init();
         
     }
@@ -33,7 +30,6 @@ public class GameManager : MonoBehaviour
         if(gameEnded == false)
         {
             gameEnded = true;
-            Debug.Log("GAME OVER");
             SceneManager.LoadScene("GameOver");
         }
     }
@@ -115,7 +111,6 @@ public class GameManager : MonoBehaviour
             playerStats.setLoadedCritDamage(saveObject.critDamage);
             playerStats.setLoadedScore(saveObject.score);
 
-            Debug.Log("Player does not exist, creating a new one");
 
         }
 
