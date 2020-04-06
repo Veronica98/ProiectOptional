@@ -44,7 +44,6 @@ public class PlayerStats : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("S-a apelat Start din playerStats");
         FindObjectOfType<GameManager>().Load();
         GameObject.FindGameObjectWithTag("Score").GetComponent<Score>().setStartingScore(score);
     }
@@ -162,9 +161,9 @@ public class PlayerStats : MonoBehaviour
 
     public void setLoadedScore(int loadedScore)
     {
-        Debug.Log("Scor vechi: " + score);
+
         score = loadedScore;
-        Debug.Log("Scor nou: " + score);
+
     }
 
 

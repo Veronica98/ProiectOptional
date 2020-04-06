@@ -34,9 +34,7 @@ public class PlayerName : MonoBehaviour
     {
 
         name = GameObject.FindGameObjectWithTag("NameInput").GetComponentInChildren<Text>().text;
-        Debug.Log(name);
-        
-        
+
     }
 
     public void StartGame()
@@ -48,5 +46,10 @@ public class PlayerName : MonoBehaviour
     public string getName()
     {
         return name;
+    }
+
+    public void setName(string newName)
+    {
+        name = newName;
     }
 }

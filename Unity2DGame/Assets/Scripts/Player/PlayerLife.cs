@@ -59,6 +59,7 @@ public class PlayerLife : MonoBehaviour
                 FindObjectOfType<GameManager>().SaveAfterDeath();
                 Destroy(gameObject);
                 Destroy(GameObject.FindGameObjectWithTag("MainCamera"));
+                Destroy(GameObject.FindGameObjectWithTag("Name"));
                 
 
 

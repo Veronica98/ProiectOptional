@@ -19,7 +19,7 @@ public static class SaveSystem
 
     public static void SaveAfterDeath(string saveString)
     {
-        File.WriteAllText(saveFolder + "/saveScore_" + GameObject.FindGameObjectWithTag("Name").GetComponent<PlayerName>().getName() + ".txt", saveString);
+        File.WriteAllText(saveFolder + "/save_" + GameObject.FindGameObjectWithTag("Name").GetComponent<PlayerName>().getName() + ".txt", saveString);
     }
 
     public static void SaveAfterShop(string saveString)
@@ -46,9 +46,9 @@ public static class SaveSystem
     public static string LoadScore()
     {
 
-        if (File.Exists(saveFolder + "/saveScore_" + GameObject.FindGameObjectWithTag("Name").GetComponent<PlayerName>().getName() + ".txt"))
+        if (File.Exists(saveFolder + "/save" + GameObject.FindGameObjectWithTag("Name").GetComponent<PlayerName>().getName() + ".txt"))
         {
-            string saveString = File.ReadAllText(saveFolder + "/saveScore_" + GameObject.FindGameObjectWithTag("Name").GetComponent<PlayerName>().getName() + ".txt");
+            string saveString = File.ReadAllText(saveFolder + "/save_" + GameObject.FindGameObjectWithTag("Name").GetComponent<PlayerName>().getName() + ".txt");
             return saveString;
         }
         else

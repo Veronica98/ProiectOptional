@@ -57,14 +57,37 @@ public class GameManager : MonoBehaviour
 
     public void SaveAfterDeath()
     {
-        SaveObjectOnDeath saveObject = new SaveObjectOnDeath
+        string saveString = SaveSystem.Load();
+
+        if (saveString != null)
         {
-            score = playerStats.getScore()
-        };
+            SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
+            saveObject.score = playerStats.getScore();
+            string jsonExist = JsonUtility.ToJson(saveObject);
+            SaveSystem.SaveAfterDeath(jsonExist);
 
-        string json = JsonUtility.ToJson(saveObject);
+        }
 
-        SaveSystem.SaveAfterDeath(json);
+        else
+        {
+            SaveObject saveObject = new SaveObject
+            {
+                
+            };
+            saveObject.score = playerStats.getScore();
+            string jsonNoExist = JsonUtility.ToJson(saveObject);
+            SaveSystem.SaveAfterDeath(jsonNoExist);
+        }
+
+            /*SaveObjectOnDeath saveObject = new SaveObjectOnDeath
+            {
+                score = playerStats.getScore()
+            };*/
+
+           // string json = JsonUtility.ToJson(saveObject);
+
+
+       // SaveSystem.SaveAfterDeath(json);
     }
 
 
