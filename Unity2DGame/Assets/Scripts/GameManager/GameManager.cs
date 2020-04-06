@@ -79,15 +79,7 @@ public class GameManager : MonoBehaviour
             SaveSystem.SaveAfterDeath(jsonNoExist);
         }
 
-            /*SaveObjectOnDeath saveObject = new SaveObjectOnDeath
-            {
-                score = playerStats.getScore()
-            };*/
 
-           // string json = JsonUtility.ToJson(saveObject);
-
-
-       // SaveSystem.SaveAfterDeath(json);
     }
 
 
@@ -110,7 +102,7 @@ public class GameManager : MonoBehaviour
             playerStats.setLoadedScore(saveObject.score);
         }
 
-        string saveStringScore = SaveSystem.LoadScore();
+        /*string saveStringScore = SaveSystem.LoadScore();
 
         if (saveStringScore != null)
         {
@@ -136,6 +128,7 @@ public class GameManager : MonoBehaviour
 
 
         }
+        */
 
     }
 

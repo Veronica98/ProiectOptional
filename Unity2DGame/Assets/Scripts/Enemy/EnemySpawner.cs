@@ -7,7 +7,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject[] enemies;
     private float randX;
     private Vector2 whereToSpawn;
-    private float spawnRate = 2f;
+    [SerializeField] private float spawnRate = 2f;
     private float nextSpawn;
 
 

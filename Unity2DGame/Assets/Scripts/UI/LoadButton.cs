@@ -18,8 +18,11 @@ public class LoadButton : MonoBehaviour
         GameObject.FindGameObjectWithTag("Name").GetComponent<PlayerName>().setName(gameObject.GetComponentInChildren<Text>().text);
     }
 
+
     public void StartGame()
     {
-        SceneManager.LoadScene("SampleScene");
+        SceneManager.LoadScene("SkillTree");
     }
+
+
 }

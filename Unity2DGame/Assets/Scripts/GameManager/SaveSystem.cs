@@ -29,6 +29,7 @@ public static class SaveSystem
 
     public static string Load()
     {
+
         if (File.Exists(saveFolder + "/save_" + GameObject.FindGameObjectWithTag("Name").GetComponent<PlayerName>().getName() + ".txt"))
         {
             string saveString = File.ReadAllText(saveFolder + "/save_" + GameObject.FindGameObjectWithTag("Name").GetComponent<PlayerName>().getName() + ".txt");
