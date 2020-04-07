@@ -70,26 +70,26 @@ public class PlayerMovement : MonoBehaviour
 
     IEnumerator OnCollisionEnter2D(Collision2D collision)
     {
-        if ((collision.gameObject.name == "jungle_pack_39 (1)") && (isGrounded == true))
+        if ((collision.gameObject.tag == "DisappearingTile") && (isGrounded == true))
         {
             
             yield return new WaitForSeconds(1);   //asteapta 1 secunda si distruge platforma
             Destroy(collision.gameObject);
         }
-        if ((collision.gameObject.name == "SinglePlatform (1)") && (isGrounded == true))
+        if ((collision.gameObject.tag == "DisappearingTile") && (isGrounded == true))
         {
             yield return new WaitForSeconds(1);   //asteapta 1 secunda si distruge platforma
             Destroy(collision.gameObject);
 
         }
-        if ((collision.gameObject.name == "SinglePlatform (2)") && (isGrounded == true))
+        if ((collision.gameObject.tag == "DisappearingTile") && (isGrounded == true))
         {
             yield return new WaitForSeconds(1);   //asteapta 1 secunda si distruge platforma
             Destroy(collision.gameObject);
 
         }
 
-        if ((collision.gameObject.name == "SinglePlatform(4)") && (isGrounded == true))
+        if ((collision.gameObject.tag == "DisappearingTile") && (isGrounded == true))
         {
             yield return new WaitForSeconds(1);   //asteapta 1 secunda si distruge platforma
             Destroy(collision.gameObject);
