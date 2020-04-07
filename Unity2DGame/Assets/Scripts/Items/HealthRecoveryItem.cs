@@ -13,9 +13,9 @@ public class HealthRecoveryItem : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             player.GetComponent<PlayerLife>().changeCurrentHealth(healthRecovery); // Daca exista coliziune cu player-ul se apeleaza functia din PlayerStats pentru stat-ul respectiv si apoi se distruge obiectul instant
             Destroy(gameObject);
