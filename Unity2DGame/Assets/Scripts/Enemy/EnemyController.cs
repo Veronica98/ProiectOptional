@@ -9,7 +9,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float groundCheckDistance;
     [SerializeField] private float wallCheckDistance;
     [SerializeField] private float movementSpeed;
-    [SerializeField] private float maxHealth;
+    private float maxHealth = 100;
 
     private int facingDirection;
 
@@ -43,12 +43,13 @@ public class EnemyController : MonoBehaviour
 
     private void Start()
     {
+
+        Invoke("setAttributes", 0.0001f);
         score = GameObject.FindWithTag("Score").GetComponent<Score>();
-        currentHealth = maxHealth;
         alive = transform.Find("Alive").gameObject;
         aliveRb = alive.GetComponent<Rigidbody2D>();
         facingDirection = 1;
-        healthBar.SetMaxHealth(maxHealth);
+        
 
     }
 
@@ -125,6 +126,24 @@ public class EnemyController : MonoBehaviour
     public float getDamage()
     {
         return damage;
+    }
+
+    private void setAttributes()
+    {
+        if(GameObject.FindGameObjectWithTag("Difficulty").GetComponent<DifficultyController>().getDifficulty() !=0)
+        {
+            maxHealth *= GameObject.FindGameObjectWithTag("Difficulty").GetComponent<DifficultyController>().getDifficulty();
+            damage *= GameObject.FindGameObjectWithTag("Difficulty").GetComponent<DifficultyController>().getDifficulty();
+            currentHealth = maxHealth;
+            healthBar.SetMaxHealth(maxHealth);
+        }
+
+        else
+        {
+            currentHealth = maxHealth;
+            healthBar.SetMaxHealth(maxHealth);
+        }
+
     }
    
 }

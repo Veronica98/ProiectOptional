@@ -35,18 +35,15 @@ public class DifficultyController : MonoBehaviour
 
     private void setDifficulty()
     {
-        Debug.Log("Scorul: " + score);
-        Debug.Log("LevelsDone: " + levelsDone);
         if(levelsDone != 0)
         {
-            difficulty = (score + levelsDone * 100) / 100;
+            difficulty = ((score / 10) + (levelsDone * 100)) / 100;
         }
         else
         {
-            difficulty = score / 100;
+            difficulty = score / 1000;
         }
 
-        Debug.Log("Dificultatea setata este: " + difficulty);
     }
 
 

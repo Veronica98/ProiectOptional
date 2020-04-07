@@ -36,14 +36,13 @@ public class EnemySpawner : MonoBehaviour
 
     private void setSpawnRate()
     {
-        Debug.Log("Difficulty is for spawner: " + difficulty);
-        Debug.Log("Old spawn rate is" + spawnRate);
+
         if(difficulty != 0)
         {
             spawnRate = spawnRate / difficulty;
         }
 
-        Debug.Log("new spawnRate = " + spawnRate);
+
 
     }
 

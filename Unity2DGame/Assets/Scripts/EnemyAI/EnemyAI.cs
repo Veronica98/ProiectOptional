@@ -18,11 +18,11 @@ public class EnemyAI : MonoBehaviour
     Rigidbody2D rb;
     public Transform EnemyParrotGFX;
 
-    [SerializeField] private float maxHealth;
+    private float maxHealth = 50;
     private float currentHealth;
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private int killPoints = 20;
-    [SerializeField] private float damage = 20;
+    private float damage = 20;
     private Score score;
 
     private float healthDropChance = 20;
@@ -34,9 +34,8 @@ public class EnemyAI : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Invoke("setAttributes", 0.5f);
         score = GameObject.FindWithTag("Score").GetComponent<Score>();
-        currentHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         InvokeRepeating("UpdatePath", 0f, .5f);
@@ -129,5 +128,24 @@ public class EnemyAI : MonoBehaviour
     public float getDamage()
     {
         return damage;
+    }
+
+
+    private void setAttributes()
+    {
+        if (GameObject.FindGameObjectWithTag("Difficulty").GetComponent<DifficultyController>().getDifficulty() != 0)
+        {
+            maxHealth *= GameObject.FindGameObjectWithTag("Difficulty").GetComponent<DifficultyController>().getDifficulty();
+            damage *= GameObject.FindGameObjectWithTag("Difficulty").GetComponent<DifficultyController>().getDifficulty();
+            currentHealth = maxHealth;
+            healthBar.SetMaxHealth(maxHealth);
+        }
+
+        else
+        {
+            currentHealth = maxHealth;
+            healthBar.SetMaxHealth(maxHealth);
+        }
+
     }
 }

@@ -6,14 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/StartMenu.unity
+    guid: e27a6f4e56e5a1044a2625fd32bee8a8
+  - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: f9353fbc547cb644fa3468bec256c146
-  - enabled: 1
-    path: Assets/Scenes/StartMenu.unity
-    guid: e27a6f4e56e5a1044a2625fd32bee8a8
   - enabled: 1
     path: Assets/Scenes/TestScene.unity
     guid: c71d4b3719301cd4ab0d7fad1ca4f503
@@ -24,6 +24,6 @@ EditorBuildSettings:
     path: Assets/Scenes/LoadScene.unity
     guid: 204980f4effd1a343904fd76fc541a80
   - enabled: 1
-    path: Assets/Scenes/SkilLTree.unity
+    path: Assets/Scenes/SkillTree.unity
     guid: 24637319de058a045ac73b333e252767
   m_configObjects: {}
