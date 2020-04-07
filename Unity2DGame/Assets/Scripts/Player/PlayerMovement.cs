@@ -76,26 +76,6 @@ public class PlayerMovement : MonoBehaviour
             yield return new WaitForSeconds(1);   //asteapta 1 secunda si distruge platforma
             Destroy(collision.gameObject);
         }
-        if ((collision.gameObject.tag == "DisappearingTile") && (isGrounded == true))
-        {
-            yield return new WaitForSeconds(1);   //asteapta 1 secunda si distruge platforma
-            Destroy(collision.gameObject);
-
-        }
-        if ((collision.gameObject.tag == "DisappearingTile") && (isGrounded == true))
-        {
-            yield return new WaitForSeconds(1);   //asteapta 1 secunda si distruge platforma
-            Destroy(collision.gameObject);
-
-        }
-
-        if ((collision.gameObject.tag == "DisappearingTile") && (isGrounded == true))
-        {
-            yield return new WaitForSeconds(1);   //asteapta 1 secunda si distruge platforma
-            Destroy(collision.gameObject);
-
-        }
-    
     }
 
     private void Flip()
