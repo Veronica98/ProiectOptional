@@ -45,6 +45,7 @@ public class PlayerStats : MonoBehaviour
     private void Start()
     {
         FindObjectOfType<GameManager>().Load();
+        GameObject.FindGameObjectWithTag("Difficulty").GetComponent<DifficultyController>().setScore(score);
         GameObject.FindGameObjectWithTag("Score").GetComponent<Score>().setStartingScore(score);
     }
 

@@ -9,6 +9,8 @@ TagManager:
   - Score
   - NameInput
   - Name
+  - LevelsDone
+  - Difficulty
   layers:
   - Default
   - TransparentFX

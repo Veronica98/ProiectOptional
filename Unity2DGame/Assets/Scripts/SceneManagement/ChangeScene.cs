@@ -15,6 +15,7 @@ public class ChangeScene : MonoBehaviour
     {
         if (collision.tag == "Player")
         {
+            GameObject.FindGameObjectWithTag("LevelsDone").GetComponent<LevelsDone>().setLevelsDone();
             SceneManager.LoadScene("TestScene");
             playerTransform.position = new Vector3(0f, 0f, 0f);
 
