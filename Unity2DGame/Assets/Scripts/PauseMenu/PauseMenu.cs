@@ -57,7 +57,6 @@ public class PauseMenu : MonoBehaviour
     {
         
         Destroy(GameObject.FindGameObjectWithTag("MainCamera"));
-        Destroy(GameObject.FindGameObjectWithTag("Name"));
         Destroy(GameObject.FindGameObjectWithTag("Player"));
     }
 
