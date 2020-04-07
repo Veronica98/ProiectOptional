@@ -42,22 +42,29 @@ public class PauseMenu : MonoBehaviour
 
     public void NewGame()
     {
-        DestroyObjects();
+        DestroyObjectsNewGame();
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void QuitToMyMenu()
     {
-        DestroyObjects();
+        DestroyObjectsQuitToMyMenu();
         ReLoad();
         
     }
 
-    private void DestroyObjects()
+    private void DestroyObjectsNewGame()
     {
         
         Destroy(GameObject.FindGameObjectWithTag("MainCamera"));
         Destroy(GameObject.FindGameObjectWithTag("Player"));
+    }
+
+    private void DestroyObjectsQuitToMyMenu()
+    {
+        Destroy(GameObject.FindGameObjectWithTag("MainCamera"));
+        Destroy(GameObject.FindGameObjectWithTag("Player"));
+        Destroy(GameObject.FindGameObjectWithTag("Name"));
     }
 
     private void ReLoad()
