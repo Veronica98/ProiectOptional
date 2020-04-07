@@ -33,6 +33,12 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private HealthBar healthBar;
 
     private Score score;
+    private float healthDropChance = 20;
+    private float fullHealthDropChance = 5;
+    [SerializeField] private GameObject healthItemPrefab;
+    [SerializeField] private GameObject fullHealthItemPrefab;
+    [SerializeField] private Transform spawnPoint;
+    
 
 
     private void Start()
@@ -100,7 +106,18 @@ public class EnemyController : MonoBehaviour
 
     void Die()
     {
+        spawnPoint = alive.transform;
         score.setScore(killPoints);
+        if(Random.Range(1,100) <= healthDropChance)
+        {
+            GameObject test = Instantiate(healthItemPrefab, spawnPoint.position, spawnPoint.rotation) as GameObject;
+        }
+        else if(Random.Range(1,100) <= fullHealthDropChance)
+        {
+            GameObject test = Instantiate(fullHealthItemPrefab, spawnPoint.position, spawnPoint.rotation) as GameObject;
+        }
+
+
         Destroy(gameObject);
     }
 
@@ -109,5 +126,5 @@ public class EnemyController : MonoBehaviour
     {
         return damage;
     }
-
+   
 }

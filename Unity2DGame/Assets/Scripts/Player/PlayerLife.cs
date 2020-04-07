@@ -77,4 +77,26 @@ public class PlayerLife : MonoBehaviour
         healthNumberText.text = currentLife.ToString() + " / " + startingLife.ToString();
 
     }
+    
+    public void changeCurrentHealth(float newCurrentHealth)
+    {
+        if (startingLife >= currentLife + newCurrentHealth)
+        {
+            currentLife += newCurrentHealth;
+        }
+        else
+        {
+            currentLife = startingLife;
+        }
+        healthBar.SetHealth(currentLife);
+        healthNumberText.text = currentLife.ToString() + " / " + startingLife.ToString();
+    }
+
+    public void fullHealth()
+    {
+        currentLife = startingLife;
+        healthBar.SetHealth(currentLife);
+        healthNumberText.text = currentLife.ToString() + " / " + startingLife.ToString();
+
+    }
 }

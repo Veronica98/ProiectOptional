@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireRateItem : MonoBehaviour
+public class HealthRecoveryItem : MonoBehaviour
 {
     private GameObject player;
-    [SerializeField] float fireRateChange;
+    [SerializeField] private float healthRecovery;
 
     void Start()
     {
@@ -17,7 +17,7 @@ public class FireRateItem : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            player.GetComponent<PlayerStats>().setFireRate(fireRateChange); // Daca exista coliziune cu player-ul se apeleaza functia din PlayerStats pentru stat-ul respectiv si apoi se distruge obiectul instant
+            player.GetComponent<PlayerLife>().changeCurrentHealth(healthRecovery); // Daca exista coliziune cu player-ul se apeleaza functia din PlayerStats pentru stat-ul respectiv si apoi se distruge obiectul instant
             Destroy(gameObject);
         }
     }

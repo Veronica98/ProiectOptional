@@ -300,6 +300,12 @@ MonoBehaviour:
   maxHealth: 50
   healthBar: {fileID: 850690026707077614}
   killPoints: 20
+  damage: 20
+  healthItemPrefab: {fileID: 1730401334352747597, guid: 42f1aa80cbbd0064e8a76c21ab7b1327,
+    type: 3}
+  fullHealthItemPrefab: {fileID: 5011922887178021895, guid: 69555dd76761492458b02d59ac505e8f,
+    type: 3}
+  spawnPoint: {fileID: 0}
 --- !u!50 &5846052188708125475
 Rigidbody2D:
   serializedVersion: 4
