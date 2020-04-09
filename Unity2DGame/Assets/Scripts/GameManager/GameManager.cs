@@ -136,9 +136,9 @@ public class GameManager : MonoBehaviour
 
     private class SaveObject
     {
-        public float maxHealth = 50;
+        public float maxHealth = 100;
         public int extraJumps = 1;
-        public float movementSpeed = 10;
+        public float movementSpeed = 15;
         public float meleeDamage = 20;
         public float rangeDamage = 20;
         public float fireRate = 0.5f;

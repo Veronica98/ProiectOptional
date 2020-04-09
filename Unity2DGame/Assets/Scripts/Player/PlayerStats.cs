@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlayerStats : MonoBehaviour
 {
-    private float maxHealth = 50;
+    private float maxHealth = 100;
     private int extraJumps = 1;
-    private float movementSpeed = 10;
+    private float movementSpeed = 15;
     private float meleeDamage = 20;
     private float rangeDamage = 20;
     private float fireRate = 0.5f;

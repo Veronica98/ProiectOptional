@@ -22,18 +22,6 @@ public class EnemySpawner : MonoBehaviour
         InvokeRepeating("Spawn", 0, spawnRate);
     }
 
-   /* private void Update()
-    {
-        if (Time.time > nextSpawn)
-        {
-            nextSpawn = Time.time + spawnRate;
-            randX = transform.position.x + Random.Range(-2f, 2f);
-            whereToSpawn = new Vector2(randX, transform.position.y);
-            Instantiate(enemies[Random.Range(0, enemies.Length)], whereToSpawn, Quaternion.identity);
-        }
-    }
-    */
-
 
     private void getDifficulty()
     {
