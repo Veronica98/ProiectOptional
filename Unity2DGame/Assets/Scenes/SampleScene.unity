@@ -13047,7 +13047,7 @@ PrefabInstance:
     - target: {fileID: 7680928835563590272, guid: b9fd99cf2e3be2e4c85dc970de42230d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.74351025
+      value: 15.29
       objectReference: {fileID: 0}
     - target: {fileID: 7680928835563590272, guid: b9fd99cf2e3be2e4c85dc970de42230d,
         type: 3}
@@ -13103,6 +13103,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Chest
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680928835907649755, guid: b9fd99cf2e3be2e4c85dc970de42230d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.342
+      objectReference: {fileID: 0}
+    - target: {fileID: 7680928835907649755, guid: b9fd99cf2e3be2e4c85dc970de42230d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.247
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9fd99cf2e3be2e4c85dc970de42230d, type: 3}
@@ -35884,6 +35894,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.56, y: 2.56}
   m_EdgeRadius: 0
+--- !u!1 &1413223034 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7680928835563590284, guid: b9fd99cf2e3be2e4c85dc970de42230d,
+    type: 3}
+  m_PrefabInstance: {fileID: 530135887}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1415726406
 GameObject:
   m_ObjectHideFlags: 0
@@ -55226,6 +55242,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 66decce3c328dba4b85a8390114bc7ec, type: 3}
+--- !u!1 &1545288999462954832 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1545288999433225892, guid: 66decce3c328dba4b85a8390114bc7ec,
+    type: 3}
+  m_PrefabInstance: {fileID: 1545288999462954831}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1545288999462954833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1545288999462954832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bbcd2ae0cdd6a94589bf47b9be2e31f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ChestToSpawn: {fileID: 1413223034}
+  spawnPoint: {fileID: 672883216}
+  Difficulty: 0
 --- !u!1001 &2507889443105123178
 PrefabInstance:
   m_ObjectHideFlags: 0
