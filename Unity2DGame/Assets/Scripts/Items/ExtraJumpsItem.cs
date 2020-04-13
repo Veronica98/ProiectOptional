@@ -6,10 +6,13 @@ public class ExtraJumpsItem : MonoBehaviour
 {
     private GameObject player;
     [SerializeField] int extraJumpsChange = 1;
+    private float limitExtraJumps = 5;
+    private float currentExtraJumps;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player"); // Se cauta dupa tag player-ul
+        currentExtraJumps = player.GetComponent<PlayerStats>().getExtraJumps();
     }
 
 
@@ -17,7 +20,10 @@ public class ExtraJumpsItem : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            player.GetComponent<PlayerStats>().setExtraJumps(extraJumpsChange); // Daca exista coliziune cu player-ul se apeleaza functia din PlayerStats pentru stat-ul respectiv si apoi se distruge obiectul instant 
+            if (currentExtraJumps + extraJumpsChange <= limitExtraJumps)
+            {
+                player.GetComponent<PlayerStats>().setExtraJumps(extraJumpsChange); // Daca exista coliziune cu player-ul se apeleaza functia din PlayerStats pentru stat-ul respectiv si apoi se distruge obiectul instant 
+            }
             Destroy(gameObject);
         }
     }
