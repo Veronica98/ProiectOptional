@@ -30,10 +30,10 @@ public class ChangeScene : MonoBehaviour
     private void generateRandomIndex()
     {
         currentIndex = SceneManager.GetActiveScene().buildIndex;
-        nextIndex = Random.Range(0, 2);
+        nextIndex = Random.Range(1, 4);
         if(nextIndex == currentIndex)
         {
-            nextIndex = (nextIndex + 1) % 2;
+            nextIndex = ((nextIndex + 1) % 3)+1;
         }
 
     }
