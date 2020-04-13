@@ -37,6 +37,11 @@ public class ExtraJumps : MonoBehaviour
                     GameObject.FindGameObjectWithTag("Score").GetComponent<ScoreSkillTree>().setScore(-cost);
                 }
 
+                else
+                {
+                    extraJumpsText.text = "Extra Jumps: MAX";
+                }
+
             }
 
 

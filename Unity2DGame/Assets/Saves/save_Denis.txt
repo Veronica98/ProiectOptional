@@ -1,1 +1,1 @@
-{"maxHealth":5400.0,"extraJumps":5,"movementSpeed":50.0,"meleeDamage":500.0,"rangeDamage":190.0,"fireRate":0.05499998480081558,"critChance":59.0,"critDamage":570.0,"score":20}
+{"maxHealth":5400.0,"extraJumps":5,"movementSpeed":50.0,"meleeDamage":500.0,"rangeDamage":190.0,"fireRate":0.05499998480081558,"critChance":59.0,"critDamage":570.0,"score":2000}

@@ -34,10 +34,14 @@ public class FireRate : MonoBehaviour
                     saveObject.score -= cost;
                     string json = JsonUtility.ToJson(saveObject);
                     SaveSystem.SaveAfterShop(json);
-                    fireRateText.text = "Fire rate: " + saveObject.fireRate.ToString();
+                    fireRateText.text = "Fire Rate: " + saveObject.fireRate.ToString();
                     GameObject.FindGameObjectWithTag("Score").GetComponent<ScoreSkillTree>().setScore(-cost);
                 }
 
+                else
+                {
+                    fireRateText.text = "Fire Rate: MAX";
+                }
             }
 
 

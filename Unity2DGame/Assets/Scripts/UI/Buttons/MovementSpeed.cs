@@ -36,6 +36,11 @@ public class MovementSpeed : MonoBehaviour
                     movementSpeedText.text = "Movement Speed: " + saveObject.movementSpeed.ToString();
                     GameObject.FindGameObjectWithTag("Score").GetComponent<ScoreSkillTree>().setScore(-cost);
                 }
+
+                else
+                {
+                    movementSpeedText.text = "Movement Speed: MAX";
+                }
                 
             }
 
