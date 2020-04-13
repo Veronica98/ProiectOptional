@@ -13,6 +13,10 @@ public class ScoreSkillTree : MonoBehaviour
     [SerializeField] private Text meleeDamage;
     [SerializeField] private Text rangeDamage;
     [SerializeField] private Text critChance;
+    [SerializeField] private Text movementSpeed;
+    [SerializeField] private Text critDamage;
+    [SerializeField] private Text extraJumps;
+    [SerializeField] private Text fireRate;
 
 
 
@@ -47,6 +51,11 @@ public class ScoreSkillTree : MonoBehaviour
             meleeDamage.text += saveObject.meleeDamage.ToString();
             rangeDamage.text += saveObject.rangeDamage.ToString();
             critChance.text += saveObject.critChance.ToString();
+            movementSpeed.text += saveObject.movementSpeed.ToString();
+            critDamage.text += saveObject.critDamage.ToString();
+            extraJumps.text += saveObject.extraJumps.ToString();
+            fireRate.text += saveObject.fireRate.ToString();
+            
 
         }
 
