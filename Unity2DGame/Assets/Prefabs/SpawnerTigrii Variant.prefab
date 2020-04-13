@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &185629142679921822
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2507889443847947026, guid: e0f0baa0da223b740be3599ba05db52e,
+        type: 3}
+      propertyPath: enemies.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2507889443847947026, guid: e0f0baa0da223b740be3599ba05db52e,
+        type: 3}
+      propertyPath: enemies.Array.data[0]
+      value: 
+      objectReference: {fileID: 3764822003181188356, guid: d9f7d4f1942c3f94a9f74c8bd04db165,
+        type: 3}
+    - target: {fileID: 2507889443847947027, guid: e0f0baa0da223b740be3599ba05db52e,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2507889443847947027, guid: e0f0baa0da223b740be3599ba05db52e,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2507889443847947027, guid: e0f0baa0da223b740be3599ba05db52e,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2507889443847947027, guid: e0f0baa0da223b740be3599ba05db52e,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2507889443847947027, guid: e0f0baa0da223b740be3599ba05db52e,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2507889443847947027, guid: e0f0baa0da223b740be3599ba05db52e,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2507889443847947027, guid: e0f0baa0da223b740be3599ba05db52e,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2507889443847947027, guid: e0f0baa0da223b740be3599ba05db52e,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2507889443847947027, guid: e0f0baa0da223b740be3599ba05db52e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2507889443847947027, guid: e0f0baa0da223b740be3599ba05db52e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2507889443847947027, guid: e0f0baa0da223b740be3599ba05db52e,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2507889443847947037, guid: e0f0baa0da223b740be3599ba05db52e,
+        type: 3}
+      propertyPath: m_Name
+      value: SpawnerTigrii
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e0f0baa0da223b740be3599ba05db52e, type: 3}
