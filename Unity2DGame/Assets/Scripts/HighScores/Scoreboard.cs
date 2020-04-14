@@ -21,51 +21,7 @@ namespace vlad.Scoreboards
 
         private List<ScoreboardEntryData> hs_list = new List<ScoreboardEntryData>();
 
-        public static long SavesCount(DirectoryInfo info)
-        {
-            long i = 0;
-            // Add file sizes.
-            FileInfo[] fis = info.GetFiles();
-            foreach (FileInfo fi in fis)
-            {
-                if (!fi.Extension.Contains("meta"))
-                {
-                    i++;
-                }
-
-            }
-            return i;
-
-        }
-
-
-        public void  add_hs_list()
-        {
-            FileInfo[] fis = info.GetFiles();
-            foreach (FileInfo fi in fis)
-            {
-
-                if (!fi.Extension.Contains("meta"))
-                {
-                    int index = fi.Name.IndexOf("_");
-                    string nume = Path.GetFileNameWithoutExtension(fi.FullName).Substring(index + 1);
-                    string saveString = SaveSystem.Load(nume);
-                    
-                    if (saveString != null)
-                    {
-                        
-                        SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
-                        ScoreboardEntryData hs_test = new ScoreboardEntryData();
-                        hs_test.entryName = nume;
-                        hs_test.entryScore = saveObject.score;
-                      
-                        hs_list.Add(hs_test);
-                            
-                    }
-
-                }
-            }
-        }
+       
         
         private void Start()
         {
@@ -74,44 +30,8 @@ namespace vlad.Scoreboards
             info = new DirectoryInfo(path);
             numberOfSaves = SavesCount(info);
             SavesCount(info);
-
             add_hs_list();
-
-         
-
             SaveScores();
-
-            UpdateUI(hs_list);
-
-            
-        }
-
-        
-        public void AddEntry(ScoreboardEntryData scoreboardEntryData)
-        {
-            ScoreboardSaveData savedScores = GetSavedScores();
-
-            bool scoreAdded = false;
-
-            foreach (ScoreboardEntryData hs_score in hs_list)
-            {
-                add_hs_list();
-            }
-
-        
-
-            //Check if the score can be added to the end of the list.
-            if (!scoreAdded && savedScores.highscores.Count < maxScoreboardEntries)
-            {
-                savedScores.highscores.Add(scoreboardEntryData);
-            }
-
-            //Remove any scores past the limit.
-            if (savedScores.highscores.Count > maxScoreboardEntries)
-            {
-                savedScores.highscores.RemoveRange(maxScoreboardEntries, savedScores.highscores.Count - maxScoreboardEntries);
-            }
-
             UpdateUI(hs_list);
 
             
@@ -130,27 +50,66 @@ namespace vlad.Scoreboards
             }
         }
 
-        private ScoreboardSaveData GetSavedScores()
+
+        public static long SavesCount(DirectoryInfo info)
         {
-            if (!File.Exists(SavePath))
+            long i = 0;
+            // Add file sizes.
+            FileInfo[] fis = info.GetFiles();
+            foreach (FileInfo fi in fis)
             {
-                File.Create(SavePath).Dispose();
-                return new ScoreboardSaveData();
+                if (!fi.Extension.Contains("meta"))
+                {
+                    i++;
+                }
+
             }
+            return i;
 
-            using (StreamReader stream = new StreamReader(SavePath))
+        }
+
+
+        public void add_hs_list()
+        {
+            FileInfo[] fis = info.GetFiles();
+            foreach (FileInfo fi in fis)
             {
-                string json = stream.ReadToEnd();
 
-                return JsonUtility.FromJson<ScoreboardSaveData>(json);
+                if (!fi.Extension.Contains("meta"))
+                {
+                    int index = fi.Name.IndexOf("_");
+                    string nume = Path.GetFileNameWithoutExtension(fi.FullName).Substring(index + 1);
+                    string saveString = SaveSystem.Load(nume);
+
+                    if (saveString != null)
+                    {
+
+                        SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
+                        ScoreboardEntryData hs_test = new ScoreboardEntryData();
+                        hs_test.entryName = nume;
+                        hs_test.entryScore = saveObject.score;
+
+                        hs_list.Add(hs_test);
+
+                    }
+
+                }
             }
         }
 
-        
-    private void SaveScores()
+        private void SaveScores()
         {
             hs_list = hs_list.OrderByDescending(o => o.entryScore).ToList();
+            
+            if (!File.Exists(SavePath))
+            {
+                File.Delete(SavePath);
+            }
 
+            else
+            {
+                    File.Create(SavePath).Dispose();
+            }
 
 
             for (int i = 0; i < maxScoreboardEntries; i++)
