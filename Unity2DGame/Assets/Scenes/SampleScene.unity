@@ -55248,7 +55248,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1545288999462954831}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1545288999462954833
+--- !u!114 &1545288999462954834
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -55257,12 +55257,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1545288999462954832}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bbcd2ae0cdd6a94589bf47b9be2e31f, type: 3}
+  m_Script: {fileID: 11500000, guid: bc8688338a5cca048a5372c3d0623cff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   ChestToSpawn: {fileID: 1413223034}
-  spawnPoint: {fileID: 672883216}
-  Difficulty: 0
+  spawnPoint: {fileID: 276588904}
+  maxChests: 3
 --- !u!1001 &2507889443105123178
 PrefabInstance:
   m_ObjectHideFlags: 0
