@@ -25,11 +25,7 @@ public class LoadMenu : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
     
     public static long SavesCount(DirectoryInfo info)
     {

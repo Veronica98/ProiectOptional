@@ -57,6 +57,8 @@ public class PlayerLife : MonoBehaviour
             {
                 GameObject.Find("Player").GetComponent<PlayerStats>().setLoadedScore(GameObject.FindWithTag("Score").GetComponent<Score>().getScore());
                 FindObjectOfType<GameManager>().SaveAfterDeath();
+
+
                 Destroy(gameObject);
                 Destroy(GameObject.FindGameObjectWithTag("MainCamera"));
                 Destroy(GameObject.FindGameObjectWithTag("Name"));

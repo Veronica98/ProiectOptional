@@ -44,6 +44,26 @@ public static class SaveSystem
 
     }
 
+
+
+    public static string Load(string name)
+    {
+        
+        if (File.Exists(saveFolder + "/save_" + name + ".txt"))
+        {
+            string saveString = File.ReadAllText(saveFolder + "/save_" + name + ".txt");
+            return saveString;
+        }
+        else
+        {
+            return null;
+        }
+
+
+
+    }
+
+
     public static string LoadScore()
     {
 
@@ -57,5 +77,6 @@ public static class SaveSystem
             return null;
         }
     }
+
 
 }

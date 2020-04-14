@@ -20765,6 +20765,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SinglePlatform (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 992919977623848595, guid: 5c0ec655f58b7534489edfa8c9fe559f,
+        type: 3}
+      propertyPath: m_TagString
+      value: DisappearingTile
+      objectReference: {fileID: 0}
     - target: {fileID: 992919977623848605, guid: 5c0ec655f58b7534489edfa8c9fe559f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -28991,6 +28996,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: SinglePlatform (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 992919977623848595, guid: 5c0ec655f58b7534489edfa8c9fe559f,
+        type: 3}
+      propertyPath: m_TagString
+      value: DisappearingTile
       objectReference: {fileID: 0}
     - target: {fileID: 992919977623848605, guid: 5c0ec655f58b7534489edfa8c9fe559f,
         type: 3}
@@ -47176,6 +47186,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SinglePlatform (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 992919977623848595, guid: 5c0ec655f58b7534489edfa8c9fe559f,
+        type: 3}
+      propertyPath: m_TagString
+      value: DisappearingTile
+      objectReference: {fileID: 0}
     - target: {fileID: 992919977623848605, guid: 5c0ec655f58b7534489edfa8c9fe559f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -55056,6 +55071,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: jungle_pack_39 (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 992919977623848595, guid: 5c0ec655f58b7534489edfa8c9fe559f,
+        type: 3}
+      propertyPath: m_TagString
+      value: DisappearingTile
       objectReference: {fileID: 0}
     - target: {fileID: 992919977623848605, guid: 5c0ec655f58b7534489edfa8c9fe559f,
         type: 3}

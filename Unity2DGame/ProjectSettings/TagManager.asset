@@ -11,6 +11,7 @@ TagManager:
   - Name
   - LevelsDone
   - Difficulty
+  - DisappearingTile
   layers:
   - Default
   - TransparentFX

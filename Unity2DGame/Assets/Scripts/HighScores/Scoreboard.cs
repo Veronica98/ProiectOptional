@@ -1,55 +1,104 @@
-﻿using System.IO;
+﻿using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using UnityEngine;
 
 namespace vlad.Scoreboards
 {
     public class Scoreboard : MonoBehaviour
     {
-        [SerializeField] private int maxScoreboardEntries = 5;
+        [SerializeField] private int maxScoreboardEntries = 3;
         [SerializeField] private Transform highscoresHolderTransform = null;
         [SerializeField] private GameObject scoreboardEntryObject = null;
 
-        [Header("Test")]
-        [SerializeField] private string testEntryName = "New Name";
-        [SerializeField] private int testEntryScore = 0;
-
+        
         private string SavePath => $"{Application.dataPath}/highscores.json";
 
+
+        private long numberOfSaves;
+        private string path;
+        DirectoryInfo info;
+
+        private List<ScoreboardEntryData> hs_list = new List<ScoreboardEntryData>();
+
+        public static long SavesCount(DirectoryInfo info)
+        {
+            long i = 0;
+            // Add file sizes.
+            FileInfo[] fis = info.GetFiles();
+            foreach (FileInfo fi in fis)
+            {
+                if (!fi.Extension.Contains("meta"))
+                {
+                    i++;
+                }
+
+            }
+            return i;
+
+        }
+
+
+        public void  add_hs_list()
+        {
+            FileInfo[] fis = info.GetFiles();
+            foreach (FileInfo fi in fis)
+            {
+
+                if (!fi.Extension.Contains("meta"))
+                {
+                    int index = fi.Name.IndexOf("_");
+                    string nume = Path.GetFileNameWithoutExtension(fi.FullName).Substring(index + 1);
+                    string saveString = SaveSystem.Load(nume);
+                    
+                    if (saveString != null)
+                    {
+                        
+                        SaveObject saveObject = JsonUtility.FromJson<SaveObject>(saveString);
+                        ScoreboardEntryData hs_test = new ScoreboardEntryData();
+                        hs_test.entryName = nume;
+                        hs_test.entryScore = saveObject.score;
+                      
+                        hs_list.Add(hs_test);
+                            
+                    }
+
+                }
+            }
+        }
+        
         private void Start()
         {
-            ScoreboardSaveData savedScores = GetSavedScores();
 
-            UpdateUI(savedScores);
+            path = Application.dataPath + "/Saves";
+            info = new DirectoryInfo(path);
+            numberOfSaves = SavesCount(info);
+            SavesCount(info);
 
-            SaveScores(savedScores);
+            add_hs_list();
+
+         
+
+            SaveScores();
+
+            UpdateUI(hs_list);
+
+            
         }
 
-        [ContextMenu("Add Test Entry")]
-        public void AddTestEntry()
-        {
-            AddEntry(new ScoreboardEntryData()
-            {
-                entryName = testEntryName,
-                entryScore = testEntryScore
-            });
-        }
-
+        
         public void AddEntry(ScoreboardEntryData scoreboardEntryData)
         {
             ScoreboardSaveData savedScores = GetSavedScores();
 
             bool scoreAdded = false;
 
-            //Check if the score is high enough to be added.
-            for (int i = 0; i < savedScores.highscores.Count; i++)
+            foreach (ScoreboardEntryData hs_score in hs_list)
             {
-                if (testEntryScore > savedScores.highscores[i].entryScore)
-                {
-                    savedScores.highscores.Insert(i, scoreboardEntryData);
-                    scoreAdded = true;
-                    break;
-                }
+                add_hs_list();
             }
+
+        
 
             //Check if the score can be added to the end of the list.
             if (!scoreAdded && savedScores.highscores.Count < maxScoreboardEntries)
@@ -63,21 +112,21 @@ namespace vlad.Scoreboards
                 savedScores.highscores.RemoveRange(maxScoreboardEntries, savedScores.highscores.Count - maxScoreboardEntries);
             }
 
-            UpdateUI(savedScores);
+            UpdateUI(hs_list);
 
-            SaveScores(savedScores);
+            
         }
 
-        private void UpdateUI(ScoreboardSaveData savedScores)
+        private void UpdateUI(List<ScoreboardEntryData> hs_list)
         {
             foreach (Transform child in highscoresHolderTransform)
             {
                 Destroy(child.gameObject);
             }
 
-            foreach (ScoreboardEntryData highscore in savedScores.highscores)
+            for (int i = 0; i < maxScoreboardEntries; i ++)
             {
-                Instantiate(scoreboardEntryObject, highscoresHolderTransform).GetComponent<ScoreboardEntryUI>().Initialise(highscore);
+                Instantiate(scoreboardEntryObject, highscoresHolderTransform).GetComponent<ScoreboardEntryUI>().Initialise(hs_list[i]);
             }
         }
 
@@ -97,13 +146,39 @@ namespace vlad.Scoreboards
             }
         }
 
-        private void SaveScores(ScoreboardSaveData scoreboardSaveData)
+        
+    private void SaveScores()
         {
-            using (StreamWriter stream = new StreamWriter(SavePath))
+            hs_list = hs_list.OrderByDescending(o => o.entryScore).ToList();
+
+
+
+            for (int i = 0; i < maxScoreboardEntries; i++)
             {
-                string json = JsonUtility.ToJson(scoreboardSaveData, true);
-                stream.Write(json);
+                using (StreamWriter stream = new StreamWriter(SavePath, true))
+                {
+                    string json = JsonUtility.ToJson(hs_list[i], true);
+                    stream.Write(json);
+                }
             }
+            
         }
+
+
+        private class SaveObject
+        {
+            public float maxHealth = 50;
+            public int extraJumps = 1;
+            public float movementSpeed = 10;
+            public float meleeDamage = 20;
+            public float rangeDamage = 20;
+            public float fireRate = 0.5f;
+            public float critChance = 10f;
+            public float critDamage = 50f;
+            public int score = 0;
+        }
+
+
+
     }
 }
