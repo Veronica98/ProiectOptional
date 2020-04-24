@@ -12,6 +12,7 @@ TagManager:
   - LevelsDone
   - Difficulty
   - DisappearingTile
+  - Blood
   layers:
   - Default
   - TransparentFX
