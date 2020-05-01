@@ -13,12 +13,12 @@ public class RangeDamageItem : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter2D(Collision2D collision) // Daca exista coliziune cu player-ul se apeleaza functia din PlayerStats pentru stat-ul respectiv si apoi se distruge obiectul instant
+    private void OnTriggerEnter2D(Collider2D collision) // Daca exista coliziune cu player-ul se apeleaza functia din PlayerStats pentru stat-ul respectiv si apoi se distruge obiectul instant
     {
         if (collision.gameObject.tag == "Player")
         {
             player.GetComponent<PlayerStats>().setRangeDamage(rangeDamageChange);
-            Destroy(gameObject);
+            Destroy(gameObject, 2f);
         }
     }
 }

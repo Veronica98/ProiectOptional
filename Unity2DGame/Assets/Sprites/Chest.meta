@@ -1,7 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Unity2DGame/Assets/Prefabs/Harta/Platforme/DispPlatform1.prefab.meta
+guid: 5f7a3c59ef8116f4fb3ee087ec1b8701
+PrefabImporter:
+=======
 guid: 6676fc33a67d7d84d90e75152389f5ac
 folderAsset: yes
 DefaultImporter:
+>>>>>>> 9e6a2d877966a96e9557edc0c05de1222fd28a86:Unity2DGame/Assets/Sprites/Chest.meta
   externalObjects: {}
   userData: 
   assetBundleName: 
