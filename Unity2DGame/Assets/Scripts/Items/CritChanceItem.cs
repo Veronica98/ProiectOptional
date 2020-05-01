@@ -13,12 +13,12 @@ public class CritChanceItem : MonoBehaviour
     }
 
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             player.GetComponent<PlayerStats>().setCritChance(critChanceChange); // Daca exista coliziune cu player-ul se apeleaza functia din PlayerStats pentru stat-ul respectiv si apoi se distruge obiectul instant
-            Destroy(gameObject);
+            Destroy(gameObject,2f);
         }
     }
 }
