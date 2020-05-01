@@ -6,9 +6,13 @@ using UnityEngine.UI;
 public class PlayerLife : MonoBehaviour
 {
     [SerializeField] private float startingLife; // Max health-ul playerului
-    private float currentLife; 
+    [SerializeField] private float startingShield;
+    private float currentLife;
+    private float currentShield;
     [SerializeField] private HealthBar healthBar; // Componenta UI health bar
     [SerializeField] private Text healthNumberText; // Componenta Health ui text
+    [SerializeField] private ShieldBar shieldBar; //Componenta UI shield bar
+    [SerializeField] private Text shieldNumberText;
     private GameObject player;
 
 
@@ -23,6 +27,10 @@ public class PlayerLife : MonoBehaviour
         currentLife = startingLife; // Egalam viata curenta cu cea maxima pentru inceput
         healthBar.SetMaxHealth(startingLife); // Setam bara de UI Health sa fie plina (cat viata maxima)
         healthNumberText.text = currentLife.ToString() + " / " + startingLife.ToString(); // Afisam in bara si viata in text pentru o claritate mai buna
+        startingShield = 100;
+        currentShield = startingShield;
+        shieldBar.SetMaxShield(startingShield);
+        shieldNumberText.text = currentShield.ToString() + "/" + startingShield.ToString();
     }
 
 
@@ -48,25 +56,47 @@ public class PlayerLife : MonoBehaviour
 
         if (currentLife > 0) // Daca player-ul inca este in viata
         {
-            currentLife -= damage; // Scadem damage-ul primit din  viata
-            healthBar.SetHealth(currentLife); // Updatam bara de health
-            healthNumberText.text = currentLife.ToString() + " / " + startingLife.ToString(); // Updatam si textul de health
-
-
-            if (currentLife <= 0) // Daca player-ul a murit
+            if (currentShield > 0)
             {
-                GameObject.Find("Player").GetComponent<PlayerStats>().setLoadedScore(GameObject.FindWithTag("Score").GetComponent<Score>().getScore());
-                FindObjectOfType<GameManager>().SaveAfterDeath();
+                if (currentShield - damage >= 0)
+                {
+                    currentShield -= damage;
+                    shieldBar.SetShield(currentShield); // Updatam bara de shield
+                    shieldNumberText.text = currentShield.ToString() + " / " + startingShield.ToString(); // Updatam si textul de shield
+                }
 
+                else
+                {
+                    currentLife = currentLife + currentShield - damage;
+                    currentShield = 0;
+                    shieldBar.SetShield(currentShield); // Updatam bara de shield
+                    shieldNumberText.text = currentShield.ToString() + " / " + startingShield.ToString(); // Updatam si textul de shield
+                    healthBar.SetHealth(currentLife); // Updatam bara de health
+                    healthNumberText.text = currentLife.ToString() + " / " + startingLife.ToString(); // Updatam si textul de health
+                }
 
-                Destroy(gameObject);
-                Destroy(GameObject.FindGameObjectWithTag("MainCamera"));
-                Destroy(GameObject.FindGameObjectWithTag("Name"));
+            }
+
+            else
+            {
+                currentLife -= damage; // Scadem damage-ul primit din  viata
+                healthBar.SetHealth(currentLife); // Updatam bara de health
+                healthNumberText.text = currentLife.ToString() + " / " + startingLife.ToString(); // Updatam si textul de health
+            }
+        }
+
+        if (currentLife <= 0) // Daca player-ul a murit
+        {
+            GameObject.Find("Player").GetComponent<PlayerStats>().setLoadedScore(GameObject.FindWithTag("Score").GetComponent<Score>().getScore());
+            FindObjectOfType<GameManager>().SaveAfterDeath();
+            Destroy(gameObject);
+            Destroy(GameObject.FindGameObjectWithTag("MainCamera"));
+            Destroy(GameObject.FindGameObjectWithTag("Name"));
                 
 
 
                 FindObjectOfType<GameManager>().EndGame();
-            }
+            
         }
     }
 
@@ -79,7 +109,16 @@ public class PlayerLife : MonoBehaviour
         healthNumberText.text = currentLife.ToString() + " / " + startingLife.ToString();
 
     }
-    
+
+    public void changeMaxShield(float maxShield) // Functie folosita atunci cand iei un item care mareste maxHealth
+    {
+        startingShield = maxShield;
+        shieldBar.SetMaxShield(maxShield);
+        shieldBar.SetShield(currentShield);
+        shieldNumberText.text = currentShield.ToString() + " / " + startingShield.ToString();
+
+    }
+
     public void changeCurrentHealth(float newCurrentHealth)
     {
         if (startingLife >= currentLife + newCurrentHealth)

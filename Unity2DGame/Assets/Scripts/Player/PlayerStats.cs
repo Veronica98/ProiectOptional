@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     private float maxHealth = 100;
+    private float maxShield = 100;
     private int extraJumps = 1;
     private float movementSpeed = 15;
     private float meleeDamage = 20;
@@ -60,6 +61,12 @@ public class PlayerStats : MonoBehaviour
     {
         maxHealth += maxHealthChange;
         player.GetComponent<PlayerLife>().changeMaxHealth(maxHealth);
+    }
+
+    public void setMaxShield(float maxShieldChange)
+    {
+        maxShield += maxShieldChange;
+        player.GetComponent<PlayerLife>().changeMaxShield(maxShield);
     }
 
     public void setExtraJumps (int extraJumpsChange)
@@ -183,6 +190,11 @@ public class PlayerStats : MonoBehaviour
     public float getMaxHealth()
     {
         return maxHealth;
+    }
+
+    public float getMaxShield()
+    {
+        return maxShield;
     }
 
     public int getExtraJumps()
