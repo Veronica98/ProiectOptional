@@ -8,7 +8,8 @@ public class ChestScript : MonoBehaviour
     public GameObject[] objects;
     public Transform spawnPoint;
     private bool chestOpened = false;
-
+    [SerializeField] private Animator animator;
+    private bool animationEnd = false;
 
 
 
@@ -23,10 +24,23 @@ public class ChestScript : MonoBehaviour
         }
     }
 
+
+    void animationStatusChange(string animationStatusChanged)
+    {
+        if (animationStatusChanged == "true")
+        {
+            animationEnd = true;
+        }
+    }
+
+
+
     void OpenChest()
     {
         
+
         chestOpened = true;
+        animator.SetBool("Open", true);
         int random = Random.Range(0, 100);
 
         if(random == 0 )
