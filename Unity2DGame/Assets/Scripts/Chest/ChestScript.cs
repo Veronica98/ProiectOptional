@@ -8,7 +8,7 @@ public class ChestScript : MonoBehaviour
     public GameObject[] objects;
     public Transform spawnPoint;
     private bool chestOpened = false;
-
+    [SerializeField] private Animator animator;
 
 
 
@@ -18,10 +18,12 @@ public class ChestScript : MonoBehaviour
         
         if (c.gameObject.tag == tagName && !chestOpened) 
         {
+            animator.SetBool("Open", true);
             
-            OpenChest();
         }
     }
+
+
 
     void OpenChest()
     {
@@ -84,7 +86,7 @@ public class ChestScript : MonoBehaviour
             GameObject item = Instantiate(objects[10], spawnPoint.position, spawnPoint.rotation) as GameObject;
         }
 
-        Destroy(gameObject, 2f);
+        Destroy(gameObject, 3f);
 
     }
 }
