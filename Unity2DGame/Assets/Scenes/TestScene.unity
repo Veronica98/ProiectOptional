@@ -1395,6 +1395,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3399886256232230887, guid: c56bfc6cadad4da4597a731a22272c77,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3399886256232230887, guid: c56bfc6cadad4da4597a731a22272c77,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8451264484315301538, guid: c56bfc6cadad4da4597a731a22272c77,
         type: 3}
       propertyPath: healthBar

@@ -68,12 +68,11 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    IEnumerator OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         if ((collision.gameObject.tag == "DisappearingTile") && (isGrounded == true))
         {
-            
-            yield return new WaitForSeconds(1);   //asteapta 1 secunda si distruge platforma
+
             Destroy(collision.gameObject);
         }
     }
