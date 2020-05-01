@@ -176,8 +176,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: a1e1c18695b480847bbdc7cd6cf34bd2, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -335,7 +335,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -293, y: -97}
+  m_AnchoredPosition: {x: -102.999954, y: -97}
   m_SizeDelta: {x: 181.6, y: 71.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &244996836
@@ -476,7 +476,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -99.9, y: -98}
+  m_AnchoredPosition: {x: 108.000015, y: -97}
   m_SizeDelta: {x: 181.6, y: 71.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &345319521
@@ -595,7 +595,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -293.00003, y: -21}
+  m_AnchoredPosition: {x: -103, y: -13}
   m_SizeDelta: {x: 181.6, y: 71.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &811073618
@@ -890,7 +890,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: -21}
+  m_AnchoredPosition: {x: 108, y: -13}
   m_SizeDelta: {x: 181.6, y: 71.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1078394121
@@ -1006,7 +1006,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 106.5, y: -78.600006}
+  m_AnchoredPosition: {x: 604, y: -94}
   m_SizeDelta: {x: 161.93, y: 88.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1362926190
@@ -1022,14 +1022,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9339623, g: 0.074893214, b: 0.074893214, a: 1}
+  m_Color: {r: 0, g: 0.735849, b: 0.46154496, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 27
+    m_Font: {fileID: 12800000, guid: 69522ba356ef77d4f9cafb041cee6e07, type: 3}
+    m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
