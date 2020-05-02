@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 5170096844265578886}
   - component: {fileID: 8804895487946552717}
   - component: {fileID: 8792557050548970394}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: SingleDiaspTile
   m_TagString: DisappearingTile
   m_Icon: {fileID: 0}

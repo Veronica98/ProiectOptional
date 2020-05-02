@@ -13,9 +13,12 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb; // RigidBody-ul playerului
 
     private bool isGrounded; // Bool daca playerul este pe pamant sau nu
+    private bool isGrounded2;
     public Transform groundCheck; // Pozitia de unde verifica daca suntem pe ceva de pe care se poate sari sau nu
+    public Transform groundCheck2;
     public float checkRadius; // Raza prin care verifica daca suntem pe ceva de pe care se poate sari sau nu
     public LayerMask whatIsGround; // De pe ce obiecte se poate sari
+    public LayerMask whatIsGround2;
     public bool isSwinging; // Bool pentru a vedea daca esti in grappling hook sau nu
 
     private bool facingRight = true; // Verificare daca playerul este cu fata in stanga sau in dreapta
@@ -33,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatIsGround); //Crearea cercului de verificare
+        isGrounded2 = Physics2D.OverlapCircle(groundCheck2.position, checkRadius, whatIsGround2);
 
         moveInput = Input.GetAxisRaw    ("Horizontal"); // Input de miscare A D sau Sageata stanga sau Sageata dreapta
         rb.velocity = new Vector2(moveInput * speed, rb.velocity.y); // Adaugare forta de miscare
@@ -41,7 +45,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isGrounded == true) // Verificam daca player-ul este pe pamanat
+        if(isGrounded || isGrounded2) // Verificam daca player-ul este pe pamanat
         {
             extraJumps = extraJumpsValue;
         }
@@ -60,7 +64,7 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = Vector2.up * jumpForce;
             extraJumps--;
         }
-        else if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && extraJumps == 0 && isGrounded ==true) // Jump pe pamant
+        else if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) && extraJumps == 0 && (isGrounded || isGrounded2)) // Jump pe pamant
         {
             rb.velocity = Vector2.up * jumpForce;
         }
@@ -70,9 +74,9 @@ public class PlayerMovement : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if ((collision.gameObject.tag == "DisappearingTile") && (isGrounded == true))
+        if ((collision.gameObject.tag == "DisappearingTile") && (isGrounded2 == true))
         {
-
+            
             Destroy(collision.gameObject);
         }
     }
