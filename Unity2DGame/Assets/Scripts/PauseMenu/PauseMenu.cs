@@ -43,7 +43,7 @@ public class PauseMenu : MonoBehaviour
     public void NewGame()
     {
         DestroyObjectsNewGame();
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(1);
     }
 
     public void QuitToMyMenu()
